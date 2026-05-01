@@ -12,9 +12,9 @@ jobs:
       contents: read
 
     steps:
-      - name: Download Kernel Source from Google Drive
+      - name: Download Kernel Source
         run: |
-          curl -L "https://docs.google.com/uc?export=download&confirm=$(curl -sL 'https://docs.google.com/uc?export=download&id=19uPZidD7pAqI0rHdGWehUKiMjVDvEUup' | grep -o 'confirm=[^&]*' | sed 's/confirm=//')&id=19uPZidD7pAqI0rHdGWehUKiMjVDvEUup" -o kernel_source.zip
+          wget -O kernel_source.zip "https://transfer.sh/get/rAYzQB11EDAY/kernel_source.zip"
           unzip kernel_source.zip -d kernel-source
 
       - name: Patch NetHunter
@@ -37,6 +37,7 @@ jobs:
           aosp-clang: true
           ksu: true
           ksu-version: main
-          android-version: 15
+          android-version: 13
           disable-lto: true
           anykernel3: true
+          
